@@ -1,0 +1,21 @@
+<nb-layout>
+  <nb-layout-column>
+    <nb-chat title="User1" size="medium">
+      <nb-chat-message *ngFor="let msg of messages"
+                      [message]="msg.body"
+                      [sender]="msg.sender"
+                      [reply]="msg.reply">
+      </nb-chat-message>
+      <nb-chat-form (send)="sendMessage($event, 'User1', 'http://www.reactiongifs.com/r/wnd1.gif', true)" [showButton]="false" [dropFiles]="true">
+      </nb-chat-form>
+    </nb-chat>
+    <nb-chat title="User2" size="medium">
+      <nb-chat-message *ngFor="let msg of messages"
+                      [message]="msg.body"
+                      [sender]="msg.sender"
+                      [reply]="!msg.reply"></nb-chat-message>
+      <nb-chat-form (send)="sendMessage($event, 'User2', 'https://i.gifer.com/no.gif', false)" [showButton]="false" [dropFiles]="true">
+      </nb-chat-form>
+    </nb-chat>
+  </nb-layout-column>
+</nb-layout>
